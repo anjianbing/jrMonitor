@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.jd.jrjt.repository.monitor.MonitorSystemDataInfoDao">
+
+
+    <select id="getList" resultType="MonitorSystemDataInfo">
+		SELECT did,sid,rid,
+	    (SELECT sname FROM monitor_system_config s WHERE s.sid = d.sid) AS sname,
+	    (SELECT rname FROM monitor_system_rule_config c WHERE c.rid = d.rid) AS rname,
+	    (SELECT uname FROM monitor_system_user_config u WHERE u.sid = d.sid LIMIT 0,1) AS uname,
+	    isemail,isphone,error_log,create_date,modified_date
+        FROM monitor_system_data_info d
+	</select>
+
+
+</mapper> 

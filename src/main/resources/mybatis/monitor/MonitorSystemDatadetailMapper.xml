@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.jd.jrjt.repository.monitor.MonitorSystemDataDetailDao">
+
+
+    <select id="get" resultType="MonitorSystemDataDetail" parameterType="int">
+		SELECT d.did,d.sid,s.sname,s.type,s.sdesc,r.rid,r.rname,d.isemail,d.isphone
+        FROM monitor_system_data_info d
+        LEFT JOIN monitor_system_config s ON s.sid = d.sid
+        LEFT JOIN monitor_system_rule_config r ON r.rid = d.rid
+         WHERE did = #{id}
+	</select>
+
+
+</mapper> 

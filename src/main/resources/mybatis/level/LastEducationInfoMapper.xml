@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.jd.jrjt.repository.level.LastEducationInfoDao">
+
+    <insert id="save" parameterType="LastEducationInfo">
+        insert into LastEducationInfo (name,documentNo,graduateYears,birthday,gender,age,
+        originalAddress,verifyResult,levelNo,startTime,graduateTime,studyStyle,studyType,
+        specialty,isKeySubject,degree,studyResult,photo,photoStyle,college,collegeOldName,
+        address,createDate,createYears,colgCharacter,colgLevel,character,colgType,scienceBatch,
+        artBatch,postDoctorNum,doctorDegreeNum,masterDegreeNuml,academicianNum,is211,
+        manageDept,keySubjectNum,riskAndAdviceInfo,processed_tm,processed_dt)
+        values (#{name},#{documentNo},#{graduateYears},#{birthday},#{gender},#{age},
+        #{originalAddress},#{verifyResult},#{levelNo},#{startTime},#{graduateTime},
+        #{studyStyle},#{studyType},#{specialty},#{isKeySubject},#{degree},#{studyResult},
+        #{photo},#{photoStyle},#{college},#{collegeOldName},#{address},#{createDate},
+        #{createYears},#{colgCharacter},#{colgLevel},#{character},#{colgType},#{scienceBatch},
+        #{artBatch},#{postDoctorNum},#{doctorDegreeNum},#{masterDegreeNuml},#{academicianNum},
+        #{is211},#{manageDept},#{keySubjectNum},#{riskAndAdviceInfo},now(),#{processedDt})
+        <selectKey resultType="int" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <select id="getAll" resultType="LastEducationInfo">
+        select name,documentNo,graduateYears,birthday,gender,age,
+        originalAddress,verifyResult,levelNo,startTime,graduateTime,studyStyle,studyType,
+        specialty,isKeySubject,degree,studyResult,photo,photoStyle,college,collegeOldName,
+        address,createDate,createYears,colgCharacter,colgLevel,character,colgType,scienceBatch,
+        artBatch,postDoctorNum,doctorDegreeNum,masterDegreeNuml,academicianNum,is211,
+        manageDept,keySubjectNum,riskAndAdviceInfo
+        from LastEducationInfo
+    </select>
+</mapper> 
